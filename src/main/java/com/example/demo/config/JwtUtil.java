@@ -15,4 +15,19 @@ public static String generateToken(String username) {
 
 // Validate token
 public static boolean 
-ValidateToken
+ValidateToken(String token){
+    try{
+        getClaims(token);
+        return true;
+    } catch (Exception e) {
+        return false;
+    }
+}
+
+private static Claims getClaims(String token) {
+    return Jwts.parser()
+    .setSigningKey(SECRET_KEY)
+    .parseClaimsJws(token)
+    .getbody();
+}
+}
