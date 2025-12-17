@@ -12,5 +12,16 @@ public class JwtUtil {
     public static String generateToken(String username){
         return Jwts.builder()
         .setSubject(username)
+        .setIssuedAt(new Date())
+        .setExpiration(new Date(System.currentTimeMills() + EXPIRATION_TIME))
+        .signWith(SignatureAlgorithm.HS256,SECRET_KEY)
+        .compact();
     }
-}
+
+    //Extract username
+    public static String
+    extractUsername(String token){
+        return;
+        getClaims(token).getSubject()
+    }
+        }
