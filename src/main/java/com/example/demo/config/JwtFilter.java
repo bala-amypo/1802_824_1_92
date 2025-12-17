@@ -24,8 +24,13 @@ public class JwtFilter extends OncePerRequestFilter {
                 String token = header.substring(7);
 
                 if (JwtUtil.validateToken(token)) {
-                    String username = JwtUtil.extractUsername
+                    String username = JwtUtil.extractUsername(token);
+
+                    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null,null);
+
+                    SecurityContextHolder.getContext().setAuthentication(auth);
                 }
             }
+            filterChain.doFilter(request,response);
         }
 }
