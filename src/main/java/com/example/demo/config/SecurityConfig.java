@@ -9,5 +9,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class Securityconfig {
 
     @Bean
-    public class
+    public JwtFilter jwtFilter() {
+        return new jwtFilter();
+    }
+
+    @Bean
+    public SecurityFilterChain
+    filterChain(HttpSecurity http) throws Exception {
+
+        http
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth)
+        .requestMatchers("/auth/")
+
+    }
 }
