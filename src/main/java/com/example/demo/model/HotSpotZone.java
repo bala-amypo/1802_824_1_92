@@ -64,7 +64,7 @@ public class HotSpotZone {
         this.centerlog = centerlog;
     }
 
-    public HotSpotzone(Long id, String name, String severityLevel, String zoneName, Double centerLat,
+    public HotSpotZone(Long id, String name, String severityLevel, String zoneName, Double centerLat,
             Double centerlog) {
         Id = id;
         this.name = name;
