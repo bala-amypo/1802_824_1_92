@@ -1,36 +1,17 @@
 package com.example.demo.config;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.io.IOException;
 
-import org.springframework.web.filter.OncePerRequestFilter;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 
-public class JwtFilter extends OncePerRequestFilter {
+import jakarta.servlet.FilterChain;
 
-    @Override
-    protected void doFilterInternal(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        FilterChain filterChain)
-        throws ServletException,
-        IOException {
+import jakarta.servlet.ServletException;
 
-            String header = request.getHeader("Authorization");
+import jakarta.servlet.http.HttpServletRequest;
 
-            if (header != null && header.startsWith("Bearer")) {
-                String token = header.substring(7);
+import jakarta.servlet.http.HttpServletResponse;
 
-                if (JwtUtil.validateToken(token)) {
-                    String username = JwtUtil.extractUsername(token);
 
-                    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null,null);
 
-                    SecurityContextHolder.getContext().setAuthentication(auth);
-                }
-            }
-            filterChain.doFilter(request,response);
-        }
-}
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.auth
