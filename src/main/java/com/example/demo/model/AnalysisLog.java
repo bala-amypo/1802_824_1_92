@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import java.time.LocalDatetime;
-import jakarta.persistence.column;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -15,9 +15,7 @@ public class AnalysisLog {
     private String message;
     private String zone;
     private LocalDateTime createdAt;
-    public void ValidateAndInitializer() {
-        this.createdAt = LocalDateTime.now();
-    }
+    
 
     public Long getId() {
         return Id;
