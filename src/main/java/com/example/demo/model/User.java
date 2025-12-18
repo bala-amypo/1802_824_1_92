@@ -2,7 +2,8 @@ package com.example.demo.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence
+import jakarta.persistence.Column;
+
 
 @Entity
 public class User {
@@ -12,4 +13,6 @@ public class User {
     private String name;
     @Column(unique=true)
     private String email;
+    private String password;
+    private 
 }
