@@ -15,5 +15,56 @@ public class AnalysisLog {
     private String message;
     private String zone;
     private LocalDateTime createdAt;
+    public void ValidateAndInitializer() {
+        this.createdAt = LocalDateTime.now();
+    }
 
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long Id) {
+        this.Id = Id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getZone() {
+        return zone;
+    }
+
+    public void setZone(String zone) {
+        this.zone = zone;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public AnalysisLog(Long id, String name, String message, String zone, LocalDateTime createdAt) {
+        Id = id;
+        this.name = name;
+        this.message = message;
+        this.zone = zone;
+        this.createdAt = createdAt;
+    }
+    
 }
