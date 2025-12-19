@@ -7,3 +7,4 @@
 
 
 @Service
+public class AnalysisLog
