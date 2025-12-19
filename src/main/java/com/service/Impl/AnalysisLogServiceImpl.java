@@ -13,12 +13,12 @@ import com.example.demo.repository.AnalysisLogRepository;
 public class AnalysisLogServiceImpl implements AnalysisLogService{
 
 @Autowired
-AnalysisLogRepository repo;
-public AnalysisLog addLog(AnalysisLog logg){
+private AnalysisLogRepository analysisLogRepository;
+
+@
+public AnalysisLog addLog(AnalysisLog logg)
 
 return repo.save(logg);
-}
-
 
 
 }
