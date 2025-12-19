@@ -4,6 +4,6 @@ import com.example.demo.model.HotspotZone;
 @Service
 public interface HotspotZoneService{
 
-    public HotspotZone
-    public  
+    public HotspotZone addZone(HotspotZone zone);
+    public HotspotZone List<HotspotZone> getAllZones();
 }
