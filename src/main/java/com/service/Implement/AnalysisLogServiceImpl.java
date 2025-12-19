@@ -1,5 +1,9 @@
 package com.example.demo.service.impl;
-
+import com.example.demo.repository.AnalysisLogrepository;
+import com.example.demo.entity.AnalysisLog;
+import com.example.demo.service.AnalysisLogService;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 
