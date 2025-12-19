@@ -11,7 +11,7 @@ public class AnalysisLogServiceImpl implements AnalysisLogService{
 
     @Autowired
     AnalysisLogRepository alr;
-    public AnalysisLog createAnalysislog(Analysislog log){
+    public AnalysisLog createAnalysislog(AnalysisLog log){
 
         return alr.save(log);
     }
