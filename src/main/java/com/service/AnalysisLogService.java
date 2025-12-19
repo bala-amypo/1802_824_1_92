@@ -3,8 +3,7 @@ import jakarta.persistence.service;
 import com.example.demo.model.AnalysisLog;
 @Service
 public interface AnalysisLogService{
-    public AnalysisLog createAnalysisLog(Analy
 
     public AnalysisLog addLog(Long zoneId, String message);
-    public List<Analysis
+    public AnalysisLog List<AnalysisLog> getLogsByZone(Long zoneId);
 }
