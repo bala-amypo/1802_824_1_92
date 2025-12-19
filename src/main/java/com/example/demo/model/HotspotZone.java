@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class HotSpotZone {
+public class HotspotZone {
 
     @Id
     private Long Id;
@@ -64,7 +64,7 @@ public class HotSpotZone {
         this.centerlog = centerlog;
     }
 
-    public HotSpotZone(Long id, String name, String severityLevel, String zoneName, Double centerLat,
+    public HotspotZone(Long id, String name, String severityLevel, String zoneName, Double centerLat,
             Double centerlog) {
         Id = id;
         this.name = name;
