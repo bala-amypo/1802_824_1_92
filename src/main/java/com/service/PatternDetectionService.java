@@ -1,9 +1,9 @@
 package com.example.demo.service;
-import jakarta.persistence.service;
-import com.example.demo.model.PatternDetection;
-@Service
-public interface PatternDetectionService{
 
-    public PatternDetection PatternDetectionResult detectPattern(Long zoneld);
-    public PatternDetection List<PatternDetectionResult> getResultsByZone(Long zoneld);
-    }
+import com.example.demo.model.PatternDetectionResult;
+import java.util.List;
+
+public interface PatternDetectionService {
+    PatternDetectionResult detectPattern(Long zoneId);
+    List<PatternDetectionResult> getResultsByZone(Long zoneId);
+}
