@@ -5,6 +5,6 @@ import com.example.demo.model.AnalysisLog;
 public interface AnalysisLogService{
     public AnalysisLog createAnalysisLog(AnalysisLog AnalyisLog);
 
-    public AnalysisLog getAnalysisLog(Long id);
-    public AnalysisLog getA
+    public AnalysisLog addLog(Long zoneId, String message)
+    public AnalysisLog 
 }
