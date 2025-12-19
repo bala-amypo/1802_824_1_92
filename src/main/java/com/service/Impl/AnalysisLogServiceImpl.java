@@ -19,7 +19,10 @@ private AnalysisLogRepository analysisLogRepository;
 public AnalysisLog addLog(Long zoneId,String message) {
     AnalysisLog = new Analysislog();
     log.setZone(String.valueOf(zoneId));
-    log.setM
+    log.setMessage(message);
+    log.setCreatedAt(LocalDateTime.now());
+
+    return
 }
 
 return repo.save(logg);
