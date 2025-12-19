@@ -1,3 +1,4 @@
+package com.example.demo.service.impl;
 
 
 
@@ -10,5 +11,11 @@
 public class AnalysisLogServiceImpl implements AnalysisLogService{
 
     @Autowired
-    AnalysisLog createAnalysislog
+    AnalysisLogRepository alr;
+    public AnalysisLog createAnalysislog(Analysislog log){
+
+        return alr.save(log);
+    }
+
+
 }
