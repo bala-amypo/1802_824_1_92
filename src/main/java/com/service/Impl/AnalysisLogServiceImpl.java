@@ -15,8 +15,12 @@ public class AnalysisLogServiceImpl implements AnalysisLogService{
 @Autowired
 private AnalysisLogRepository analysisLogRepository;
 
-@
-public AnalysisLog addLog(AnalysisLog logg)
+@Override
+public AnalysisLog addLog(Long zoneId,String message) {
+    AnalysisLog = new Analysislog();
+    log.setZone(String.valueOf(zoneId));
+    log.setM
+}
 
 return repo.save(logg);
 
