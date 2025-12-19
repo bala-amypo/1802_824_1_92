@@ -5,6 +5,5 @@ import com.example.demo.model.AnalysisLog;
 public interface AnalysisLogService{
 
     public AnalysisLog addLog(Long zoneId, String message);
-    public 
-    AnalysisLog List<AnalysisLog> getLogsByZone(Long zoneId);
+    public AnalysisLog List<AnalysisLog> getLogsByZone(Long zoneId);
 }

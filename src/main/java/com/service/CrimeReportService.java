@@ -4,6 +4,6 @@ import com.example.demo.model.CrimeReport;
 @Service
 public interface CrimeReportService{
 
-    public CrimeReport addLog(Long zoneId, String message);
-    public 
+    public CrimeReport addReport(CrimeReport report);
+    public CrimeReport List<CrimeReport> getAllReports();
 }
