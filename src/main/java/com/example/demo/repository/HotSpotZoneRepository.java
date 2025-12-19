@@ -3,6 +3,6 @@ package com.example.demo.repository;
 import com.example.demo.model.HotSpotZone;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface HotSpotZoneRepository extends JpaRepository<HotspotZone, Long>{
+public interface HotspotZoneRepository extends JpaRepository<HotspotZone, Long>{
 
 }
