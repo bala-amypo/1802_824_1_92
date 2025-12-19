@@ -4,6 +4,6 @@ import com.example.demo.model.PatternDetection;
 @Service
 public interface PatternDetectionService{
 
-    public PatternDetection 
+    public PatternDetection PatternDetectionResult detectPattern
     public PatternDetection 
 }
