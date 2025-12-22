@@ -3,6 +3,11 @@ package com.example.demo.repository;
 import com.example.demo.model.PatternDetectionResult;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PatternDetectionResultRepository extends JpaRepository<PatternDetectionResult, Long>{
+import java.util.List;
 
+public interface PatternDetectionResultRepository
+        extends JpaRepository<PatternDetectionResult, Long> {
+
+    // Fetch results for a specific hotspot zone
+    List<PatternDetectionResult> findByZone_Id(Long zoneId);
 }
