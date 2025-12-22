@@ -12,12 +12,8 @@ public class HotspotZone {
     @Column(unique = true)
     private String zoneName;
 
-    private Double centerLat;
-    private Double centerLong;
-
-    private String severityLevel;
-
     public HotspotZone() {}
 
-    // getters & setters
+    public Long getId() { return id; }
+    public String getZoneName() { return zoneName; }
 }

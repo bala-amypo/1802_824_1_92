@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 public class PatternDetectionResult {
@@ -10,14 +9,10 @@ public class PatternDetectionResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String detectedPattern;
+
     @ManyToOne
     private HotspotZone zone;
 
-    private LocalDate analysisDate;
-    private Integer crimeCount;
-    private String detectedPattern;
-
     public PatternDetectionResult() {}
-
-    // getters & setters
 }
