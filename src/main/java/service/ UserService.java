@@ -4,6 +4,8 @@ import com.example.demo.entity.User;
 import java.util.List;
 
 public interface UserService {
-    User save(User user);
-    List<User> findAll();
+
+    User saveUser(User user);
+
+    List<User> getAllUsers();
 }
