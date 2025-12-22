@@ -1,4 +1,4 @@
-[3:39 pm, 22/12/2025] Srivimal Skct: package com.example.demo.entity;
+package com.example.demo.entity;
 
 import jakarta.persistence.*;
 
@@ -31,4 +31,51 @@ public class CrimeReport {
     public CrimeReport(Long id, String crimeType, String location,
                        String severity, String description) {
         this.id = id;
-  …
+        this.crimeType = crimeType;
+        this.location = location;
+        this.severity = severity;
+        this.description = description;
+    }
+
+    /* ---------------- GETTERS & SETTERS ---------------- */
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCrimeType() {
+        return crimeType;
+    }
+
+    public void setCrimeType(String crimeType) {
+        this.crimeType = crimeType;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getSeverity() {
+        return severity;
+    }
+
+    public void setSeverity(String severity) {
+        this.severity = severity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
