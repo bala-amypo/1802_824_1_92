@@ -1,31 +1,22 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "hotspot_zones")
 public class HotspotZone {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String zoneName;
-    private Double latitude;
-    private Double longitude;
-
-    public HotspotZone() {
-    }
-
-    public HotspotZone(Long id, String zoneName, Double latitude, Double longitude) {
-        this.id = id;
-        this.zoneName = zoneName;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
+    private String riskLevel;
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getZoneName() {
@@ -36,23 +27,11 @@ public class HotspotZone {
         this.zoneName = zoneName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getRiskLevel() {
+        return riskLevel;
     }
 
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    public void setRiskLevel(String riskLevel) {
+        this.riskLevel = riskLevel;
     }
 }
