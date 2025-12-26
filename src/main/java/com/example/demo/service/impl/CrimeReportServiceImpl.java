@@ -5,7 +5,6 @@ import com.example.demo.repository.CrimeReportRepository;
 import com.example.demo.service.CrimeReportService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,22 +17,12 @@ public class CrimeReportServiceImpl implements CrimeReportService {
     }
 
     @Override
-    public CrimeReport saveCrime(CrimeReport crimeReport) {
+    public CrimeReport createCrime(CrimeReport crimeReport) {
         return repository.save(crimeReport);
     }
 
     @Override
-    public List<CrimeReport> getAllCrimes() {
-        return repository.findAll();
-    }
-
-    @Override
-    public Optional<CrimeReport> getCrimeById(Long id) {
+    public Optional<CrimeReport> getById(Long id) {
         return repository.findById(id);
-    }
-
-    @Override
-    public void deleteCrime(Long id) {
-        repository.deleteById(id);
     }
 }
