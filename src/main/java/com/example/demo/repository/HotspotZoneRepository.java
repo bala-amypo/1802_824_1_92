@@ -4,4 +4,6 @@ import com.example.demo.model.HotspotZone;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HotspotZoneRepository extends JpaRepository<HotspotZone, Long> {
+    boolean existsByZoneName(String zoneName);
+
 }
