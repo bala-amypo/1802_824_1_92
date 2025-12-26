@@ -5,6 +5,8 @@ import com.example.demo.service.CrimeReportService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/crime-reports")
 public class CrimeReportController {
@@ -16,14 +18,15 @@ public class CrimeReportController {
     }
 
     @PostMapping
-    public ResponseEntity<CrimeReport> create(@RequestBody CrimeReport report) {
-        return ResponseEntity.ok(service.createCrime(report));
+    public ResponseEntity<CrimeReport> createCrime(@RequestBody CrimeReport report) {
+        CrimeReport saved = service.createCrime(report);
+        return ResponseEntity.ok(saved);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CrimeReport> getById(@PathVariable Long id) {
-        return service.getById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<CrimeReport> getCrime(@PathVariable Long id) {
+        Optional<CrimeReport> result = service.getCrimeById(id);
+        return result.map(ResponseEntity::ok)
+                     .orElse(ResponseEntity.notFound().build());
     }
 }

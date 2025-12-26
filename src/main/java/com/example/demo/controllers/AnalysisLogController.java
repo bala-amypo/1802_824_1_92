@@ -5,6 +5,8 @@ import com.example.demo.service.AnalysisLogService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/analysis-logs")
 public class AnalysisLogController {
@@ -17,8 +19,8 @@ public class AnalysisLogController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AnalysisLog> getById(@PathVariable Long id) {
-        return service.getById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Optional<AnalysisLog> result = service.getById(id);
+        return result.map(ResponseEntity::ok)
+                     .orElse(ResponseEntity.notFound().build());
     }
 }

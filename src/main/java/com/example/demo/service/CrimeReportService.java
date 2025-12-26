@@ -1,12 +1,25 @@
 package com.example.demo.service;
 
 import com.example.demo.model.CrimeReport;
+import com.example.demo.repository.CrimeReportRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-public interface CrimeReportService {
+@Service
+public class CrimeReportService {
 
-    CrimeReport createCrime(CrimeReport crimeReport);
+    private final CrimeReportRepository repository;
 
-    Optional<CrimeReport> getById(Long id);
+    public CrimeReportService(CrimeReportRepository repository) {
+        this.repository = repository;
+    }
+
+    public CrimeReport createCrime(CrimeReport crimeReport) {
+        return repository.save(crimeReport);
+    }
+
+    public Optional<CrimeReport> getCrimeById(Long id) {
+        return repository.findById(id);
+    }
 }
