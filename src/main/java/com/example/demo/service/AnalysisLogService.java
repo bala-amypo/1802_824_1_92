@@ -1,9 +1,11 @@
 package com.example.demo.service;
 
-import com.example.demo.model.AnalysisLog;
-import java.util.List;
+import org.springframework.stereotype.Service;
 
-public interface AnalysisLogService {
-    AnalysisLog save(AnalysisLog log);
-    List<AnalysisLog> getAll();
+@Service
+public class AnalysisLogService {
+
+    public String getById(Long id) {
+        return "Analysis log for ID: " + id;
+    }
 }
