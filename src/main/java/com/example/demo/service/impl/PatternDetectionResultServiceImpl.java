@@ -11,31 +11,31 @@ import com.example.demo.service.PatternDetectionResultService;
 public class PatternDetectionResultServiceImpl
         implements PatternDetectionResultService {
 
-    // ✅ CONSTRUCTOR (OPTIONAL)
+    // ✅ Constructor (name matches class)
     public PatternDetectionResultServiceImpl() {
     }
 
-    // ✅ METHOD WITH RETURN TYPE
+    // ✅ Return type PRESENT
     @Override
     public PatternDetectionResult save(PatternDetectionResult result) {
         return result;
     }
 
-    // ✅ METHOD WITH RETURN TYPE
+    // ✅ Return type PRESENT
     @Override
     public List<PatternDetectionResult> findAll() {
         return List.of();
     }
 
-    // ✅ METHOD WITH RETURN TYPE
+    // ✅ Return type PRESENT
     @Override
     public PatternDetectionResult findById(Long id) {
         return null;
     }
 
-    // ✅ METHOD WITH RETURN TYPE
+    // ✅ void return type
     @Override
     public void deleteById(Long id) {
-        // no-op
+        // no operation
     }
 }

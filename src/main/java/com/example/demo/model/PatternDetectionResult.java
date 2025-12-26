@@ -1,22 +1,31 @@
 package com.example.demo.model;
 
-import java.time.LocalDate;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class PatternDetectionResult {
-    private HotspotZone zone;
-    private Integer crimeCount;
-    private String detectedPattern;
-    private LocalDate analysisDate;
 
-    public HotspotZone getZone(){ return zone; }
-    public void setZone(HotspotZone z){ zone=z; }
+    @Id
+    private Long id;
+    private String description;
 
-    public Integer getCrimeCount(){ return crimeCount; }
-    public void setCrimeCount(Integer c){ crimeCount=c; }
+    public PatternDetectionResult() {
+    }
 
-    public String getDetectedPattern(){ return detectedPattern; }
-    public void setDetectedPattern(String d){ detectedPattern=d; }
+    public Long getId() {
+        return id;
+    }
 
-    public LocalDate getAnalysisDate(){ return analysisDate; }
-    public void setAnalysisDate(LocalDate d){ analysisDate=d; }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
