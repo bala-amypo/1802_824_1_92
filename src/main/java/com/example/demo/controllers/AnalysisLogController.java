@@ -2,9 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.model.AnalysisLog;
 import com.example.demo.service.AnalysisLogService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/analysis-logs")
@@ -12,31 +13,14 @@ public class AnalysisLogController {
 
     private final AnalysisLogService service;
 
-    public AnalysisLogController(
-            AnalysisLogService service) {
+    public AnalysisLogController(AnalysisLogService service) {
         this.service = service;
     }
 
-    @PostMapping
-    public AnalysisLog create(
-            @RequestBody AnalysisLog log) {
-        return service.save(log);
-    }
-
-    @GetMapping
-    public List<AnalysisLog> getAll() {
-        return service.findAll();
-    }
-
     @GetMapping("/{id}")
-    public AnalysisLog getById(
-            @PathVariable Long id) {
-        return service.findById(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(
-            @PathVariable Long id) {
-        service.deleteById(id);
+    public ResponseEntity<AnalysisLog> getById(@PathVariable Long id) {
+        Optional<AnalysisLog> result = service.getById(id);
+        return result.map(ResponseEntity::ok)
+                     .orElse(ResponseEntity.notFound().build());
     }
 }
