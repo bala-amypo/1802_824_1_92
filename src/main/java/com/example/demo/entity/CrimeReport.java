@@ -1,81 +1,26 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
-import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "crime_reports")
 public class CrimeReport {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
     private String crimeType;
-
-    @Column(nullable = false)
-    private String location;
-
-    @Column(nullable = false)
-    private String severity;
-
     private String description;
+    private Double latitude;
+    private Double longitude;
+    private LocalDateTime occurredAt;
 
-    /* ---------------- CONSTRUCTORS ---------------- */
+    public String getCrimeType(){ return crimeType; }
+    public void setCrimeType(String c){ crimeType=c; }
 
-    // No-Args Constructor
-    public CrimeReport() {
-    }
+    public Double getLatitude(){ return latitude; }
+    public void setLatitude(Double l){ latitude=l; }
 
-    // All-Args Constructor
-    public CrimeReport(Long id, String crimeType, String location,
-                       String severity, String description) {
-        this.id = id;
-        this.crimeType = crimeType;
-        this.location = location;
-        this.severity = severity;
-        this.description = description;
-    }
+    public Double getLongitude(){ return longitude; }
+    public void setLongitude(Double l){ longitude=l; }
 
-    /* ---------------- GETTERS & SETTERS ---------------- */
+    public LocalDateTime getOccurredAt(){ return occurredAt; }
+    public void setOccurredAt(LocalDateTime t){ occurredAt=t; }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCrimeType() {
-        return crimeType;
-    }
-
-    public void setCrimeType(String crimeType) {
-        this.crimeType = crimeType;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getSeverity() {
-        return severity;
-    }
-
-    public void setSeverity(String severity) {
-        this.severity = severity;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getDescription(){ return description; }
+    public void setDescription(String d){ description=d; }
 }

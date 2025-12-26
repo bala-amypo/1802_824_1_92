@@ -1,54 +1,22 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.time.LocalDate;
 
-@Entity
-@Table(name = "pattern_detection_results")
 public class PatternDetectionResult {
+    private HotspotZone zone;
+    private Integer crimeCount;
+    private String detectedPattern;
+    private LocalDate analysisDate;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public HotspotZone getZone(){ return zone; }
+    public void setZone(HotspotZone z){ zone=z; }
 
-    private String patternType;
-    private String description;
+    public Integer getCrimeCount(){ return crimeCount; }
+    public void setCrimeCount(Integer c){ crimeCount=c; }
 
-    // No-Args Constructor
-    public PatternDetectionResult() {
-    }
+    public String getDetectedPattern(){ return detectedPattern; }
+    public void setDetectedPattern(String d){ detectedPattern=d; }
 
-    // All-Args Constructor
-    public PatternDetectionResult(Long id, String patternType, String description) {
-        this.id = id;
-        this.patternType = patternType;
-        this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getPatternType() {
-        return patternType;
-    }
-
-    public void setPatternType(String patternType) {
-        this.patternType = patternType;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public LocalDate getAnalysisDate(){ return analysisDate; }
+    public void setAnalysisDate(LocalDate d){ analysisDate=d; }
 }
