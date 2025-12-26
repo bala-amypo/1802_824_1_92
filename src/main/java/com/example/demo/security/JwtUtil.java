@@ -1,42 +1,40 @@
 package com.example.demo.security;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
-import java.security.Key;
+import java.util.Base64;
 import java.util.Date;
 
 @Component
 public class JwtUtil {
 
     private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
-    private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
+    // Generate a simple encoded token
     public String generateToken(String username) {
-        return Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(key)
-                .compact();
+        long expiry = System.currentTimeMillis() + EXPIRATION_TIME;
+        String tokenData = username + ":" + expiry;
+        return Base64.getEncoder().encodeToString(tokenData.getBytes());
     }
 
+    // Extract username from token
     public String extractUsername(String token) {
-        return getClaims(token).getSubject();
+        try {
+            String decoded = new String(Base64.getDecoder().decode(token));
+            return decoded.split(":")[0];
+        } catch (Exception e) {
+            return null;
+        }
     }
 
+    // Check token expiration
     public boolean isTokenExpired(String token) {
-        return getClaims(token).getExpiration().before(new Date());
-    }
-
-    private Claims getClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+            String decoded = new String(Base64.getDecoder().decode(token));
+            long expiry = Long.parseLong(decoded.split(":")[1]);
+            return expiry < System.currentTimeMillis();
+        } catch (Exception e) {
+            return true;
+        }
     }
 }
