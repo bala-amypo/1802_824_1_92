@@ -5,6 +5,8 @@ import com.example.demo.service.PatternDetectionResultService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/pattern-results")
 public class PatternDetectionResultController {
@@ -17,8 +19,8 @@ public class PatternDetectionResultController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PatternDetectionResult> getById(@PathVariable Long id) {
-        return service.getById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Optional<PatternDetectionResult> result = service.getById(id);
+        return result.map(ResponseEntity::ok)
+                     .orElse(ResponseEntity.notFound().build());
     }
 }
