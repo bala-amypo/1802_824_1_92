@@ -25,14 +25,4 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
         return repository.findAll();
     }
-
-    @Override
-    public User findById(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        repository.deleteById(id);
-    }
 }
