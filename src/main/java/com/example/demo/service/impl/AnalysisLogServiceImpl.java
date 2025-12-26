@@ -6,23 +6,34 @@ import com.example.demo.service.AnalysisLogService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnalysisLogServiceImpl implements AnalysisLogService {
 
-    private final AnalysisLogRepository analysisLogRepository;
+    private final AnalysisLogRepository repository;
 
-    public AnalysisLogServiceImpl(AnalysisLogRepository analysisLogRepository) {
-        this.analysisLogRepository = analysisLogRepository;
+    public AnalysisLogServiceImpl(AnalysisLogRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public AnalysisLog saveLog(AnalysisLog log) {
-        return analysisLogRepository.save(log);
+    public AnalysisLog save(AnalysisLog analysisLog) {
+        return repository.save(analysisLog);
     }
 
     @Override
-    public List<AnalysisLog> getLogsByZoneId(Long zoneId) {
-        return analysisLogRepository.findByZoneId(zoneId);
+    public List<AnalysisLog> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Optional<AnalysisLog> findById(Long id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }
