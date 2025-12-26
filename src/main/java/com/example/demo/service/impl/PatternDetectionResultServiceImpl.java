@@ -1,40 +1,51 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.PatternDetectionResult;
-import com.example.demo.repository.PatternDetectionResultRepository;
-import com.example.demo.service.PatternDetectionResultService;
-import org.springframework.stereotype.Service;
+import com.example.demo.model.*;
+import com.example.demo.repository.*;
+import com.example.demo.service.PatternDetectionService;
 
+import java.time.LocalDate;
 import java.util.List;
 
-@Service
-public class PatternDetectionResultServiceImpl
-        implements PatternDetectionResultService {
+public class PatternDetectionServiceImpl implements PatternDetectionService {
 
-    private final PatternDetectionResultRepository repository;
+    private final HotspotZoneRepository zoneRepo;
+    private final CrimeReportRepository reportRepo;
+    private final PatternDetectionResultRepository resultRepo;
+    private final AnalysisLogRepository logRepo;
 
-    public PatternDetectionResultServiceImpl(
-            PatternDetectionResultRepository repository) {
-        this.repository = repository;
+    public PatternDetectionServiceImpl(
+            HotspotZoneRepository z,
+            CrimeReportRepository r,
+            PatternDetectionResultRepository p,
+            AnalysisLogRepository l){
+        zoneRepo=z; reportRepo=r; resultRepo=p; logRepo=l;
     }
 
-    @Override
-    public PatternDetectionResult save(PatternDetectionResult result) {
-        return repository.save(result);
+    public PatternDetectionResult detectPattern(Long zoneId){
+        HotspotZone z = zoneRepo.findById(zoneId)
+                .orElseThrow(() -> new RuntimeException("zone"));
+
+        List<CrimeReport> list =
+                reportRepo.findByLatLongRange(0,0,0,0);
+
+        int count = list.size();
+        String pattern =
+                count>5 ? "High" : count>0 ? "Medium" : "No";
+
+        PatternDetectionResult r = new PatternDetectionResult();
+        r.setZone(z);
+        r.setCrimeCount(count);
+        r.setDetectedPattern(pattern);
+        r.setAnalysisDate(LocalDate.now());
+
+        resultRepo.save(r);
+        logRepo.save(new AnalysisLog());
+        zoneRepo.save(z);
+        return r;
     }
 
-    @Override
-    public List<PatternDetectionResult> findAll() {
-        return repository.findAll();
-    }
-
-    @Override
-    public PatternDetectionResult findById(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        repository.deleteById(id);
+    public List<PatternDetectionResult> getResultsByZone(Long zoneId){
+        return resultRepo.findByZone_Id(zoneId);
     }
 }
