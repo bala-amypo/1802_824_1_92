@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface AnalysisLogRepository extends JpaRepository<AnalysisLog, Long> {
 
-    List<AnalysisLog> findByZone(String zone);
+    // REQUIRED by AnalysisLogServiceImpl
+    List<AnalysisLog> findByZoneId(Long zoneId);
 }
