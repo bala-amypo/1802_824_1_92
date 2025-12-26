@@ -13,17 +13,17 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.role = role;
+        if (role != null) this.role = role;
     }
 
-    // getters & setters
-    public Long getId(){ return id; }
-    public void setId(Long id){ this.id=id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getName(){ return name; }
-    public String getEmail(){ return email; }
-    public String getPassword(){ return password; }
-    public String getRole(){ return role; }
+    public String getName() { return name; }
+    public String getEmail() { return email; }
 
-    public void setPassword(String password){ this.password=password; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
+    public String getRole() { return role; }
 }
