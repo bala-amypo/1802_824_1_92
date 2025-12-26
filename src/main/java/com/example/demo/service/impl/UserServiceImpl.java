@@ -3,7 +3,11 @@ package com.example.demo.service.impl;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repo;
@@ -12,16 +16,13 @@ public class UserServiceImpl implements UserService {
         this.repo = repo;
     }
 
-    public User register(User user) {
-        if (repo.existsByEmail(user.getEmail()))
-            throw new RuntimeException("exists");
-
-        user.setPassword("HASHED_" + user.getPassword());
-        return repo.save(user);
+    @Override
+    public List<User> getAllUsers() {
+        return repo.findAll();
     }
 
-    public User findByEmail(String email) {
-        return repo.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("not found"));
+    @Override
+    public User saveUser(User user) {
+        return repo.save(user);
     }
 }
