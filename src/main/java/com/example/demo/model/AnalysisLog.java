@@ -1,20 +1,49 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
+@Entity
 public class AnalysisLog {
+
+    @Id
     private Long id;
     private String message;
-    private LocalDateTime loggedAt = LocalDateTime.now();
-    private HotspotZone zone;
+    private String zone;
+    private LocalDateTime createdAt;
 
-    public Long getId() { return id; }
+    public AnalysisLog() {}
 
-    public String getMessage() { return message; }
-    public void setMessage(String message) { this.message = message; }
+    public Long getId() {
+        return id;
+    }
 
-    public LocalDateTime getLoggedAt() { return loggedAt; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public HotspotZone getZone() { return zone; }
-    public void setZone(HotspotZone zone) { this.zone = zone; }
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getZone() {
+        return zone;
+    }
+
+    public void setZone(String zone) {
+        this.zone = zone;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
