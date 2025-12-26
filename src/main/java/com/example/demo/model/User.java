@@ -1,29 +1,20 @@
 package com.example.demo.model;
 
-public class User {
+import java.time.LocalDateTime;
+
+public class AnalysisLog {
     private Long id;
-    private String name;
-    private String email;
-    private String password;
-    private String role = "ANALYST";
-
-    public User() {}
-
-    public User(String name, String email, String password, String role) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        if (role != null) this.role = role;
-    }
+    private String message;
+    private LocalDateTime loggedAt = LocalDateTime.now();
+    private HotspotZone zone;
 
     public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
 
-    public String getName() { return name; }
-    public String getEmail() { return email; }
+    public String getMessage() { return message; }
+    public void setMessage(String message) { this.message = message; }
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    public LocalDateTime getLoggedAt() { return loggedAt; }
 
-    public String getRole() { return role; }
+    public HotspotZone getZone() { return zone; }
+    public void setZone(HotspotZone zone) { this.zone = zone; }
 }
