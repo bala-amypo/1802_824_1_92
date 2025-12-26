@@ -7,4 +7,3 @@ public interface HotspotZoneService {
     HotspotZone save(HotspotZone zone);
     List<HotspotZone> findAll();
 }
-

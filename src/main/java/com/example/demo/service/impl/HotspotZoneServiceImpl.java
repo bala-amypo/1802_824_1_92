@@ -25,14 +25,4 @@ public class HotspotZoneServiceImpl implements HotspotZoneService {
     public List<HotspotZone> findAll() {
         return repository.findAll();
     }
-
-    @Override
-    public HotspotZone findById(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        repository.deleteById(id);
-    }
 }
