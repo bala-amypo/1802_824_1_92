@@ -3,22 +3,36 @@ package com.example.demo.service.impl;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository repo;
+    private final UserRepository repository;
 
-    public UserServiceImpl(UserRepository repo){ this.repo=repo; }
-
-    public User register(User u) {
-        if(repo.existsByEmail(u.getEmail()))
-            throw new RuntimeException("exists");
-        u.setPassword("HASHED_"+u.getPassword());
-        return repo.save(u);
+    public UserServiceImpl(UserRepository repository) {
+        this.repository = repository;
     }
 
-    public User findByEmail(String email){
-        return repo.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("not"));
+    @Override
+    public User save(User user) {
+        return repository.save(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public User findById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }
