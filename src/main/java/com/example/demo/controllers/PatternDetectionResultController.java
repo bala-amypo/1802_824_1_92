@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.PatternDetectionResult;
+import com.example.demo.model.PatternDetectionResult;
 import com.example.demo.service.PatternDetectionResultService;
 import org.springframework.web.bind.annotation.*;
 
