@@ -1,51 +1,41 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.*;
-import com.example.demo.repository.*;
-import com.example.demo.service.PatternDetectionService;
-
-import java.time.LocalDate;
 import java.util.List;
 
-public class PatternDetectionResultServiceImpl implements PatternDetectionService {
+import org.springframework.stereotype.Service;
 
-    private final HotspotZoneRepository zoneRepo;
-    private final CrimeReportRepository reportRepo;
-    private final PatternDetectionResultRepository resultRepo;
-    private final AnalysisLogRepository logRepo;
+import com.example.demo.model.PatternDetectionResult;
+import com.example.demo.service.PatternDetectionResultService;
 
-    public PatternDetectionServiceImpl(
-            HotspotZoneRepository z,
-            CrimeReportRepository r,
-            PatternDetectionResultRepository p,
-            AnalysisLogRepository l){
-        zoneRepo=z; reportRepo=r; resultRepo=p; logRepo=l;
+@Service
+public class PatternDetectionResultServiceImpl
+        implements PatternDetectionResultService {
+
+    // ✅ CONSTRUCTOR (OPTIONAL)
+    public PatternDetectionResultServiceImpl() {
     }
 
-    public PatternDetectionResult detectPattern(Long zoneId){
-        HotspotZone z = zoneRepo.findById(zoneId)
-                .orElseThrow(() -> new RuntimeException("zone"));
-
-        List<CrimeReport> list =
-                reportRepo.findByLatLongRange(0,0,0,0);
-
-        int count = list.size();
-        String pattern =
-                count>5 ? "High" : count>0 ? "Medium" : "No";
-
-        PatternDetectionResult r = new PatternDetectionResult();
-        r.setZone(z);
-        r.setCrimeCount(count);
-        r.setDetectedPattern(pattern);
-        r.setAnalysisDate(LocalDate.now());
-
-        resultRepo.save(r);
-        logRepo.save(new AnalysisLog());
-        zoneRepo.save(z);
-        return r;
+    // ✅ METHOD WITH RETURN TYPE
+    @Override
+    public PatternDetectionResult save(PatternDetectionResult result) {
+        return result;
     }
 
-    public List<PatternDetectionResult> getResultsByZone(Long zoneId){
-        return resultRepo.findByZone_Id(zoneId);
+    // ✅ METHOD WITH RETURN TYPE
+    @Override
+    public List<PatternDetectionResult> findAll() {
+        return List.of();
+    }
+
+    // ✅ METHOD WITH RETURN TYPE
+    @Override
+    public PatternDetectionResult findById(Long id) {
+        return null;
+    }
+
+    // ✅ METHOD WITH RETURN TYPE
+    @Override
+    public void deleteById(Long id) {
+        // no-op
     }
 }
