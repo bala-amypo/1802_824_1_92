@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.HotspotZone;
+import com.example.demo.model.HotspotZone;
 import com.example.demo.service.HotspotZoneService;
 import org.springframework.web.bind.annotation.*;
 
