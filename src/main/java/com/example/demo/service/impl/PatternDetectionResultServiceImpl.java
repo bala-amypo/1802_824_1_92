@@ -7,7 +7,7 @@ import com.example.demo.service.PatternDetectionService;
 import java.time.LocalDate;
 import java.util.List;
 
-public class PatternDetectionServiceImpl implements PatternDetectionService {
+public class PatternDetectionResultServiceImpl implements PatternDetectionService {
 
     private final HotspotZoneRepository zoneRepo;
     private final CrimeReportRepository reportRepo;
