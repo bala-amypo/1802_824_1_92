@@ -1,13 +1,13 @@
 package com.example.demo.service;
 
-import com.example.demo.model.AnalysisLog;
 import java.util.List;
+import com.example.demo.model.AnalysisLog;
 
 public interface AnalysisLogService {
 
-    List<AnalysisLog> getAllLogs();
+    List<AnalysisLog> getLogs();
 
-    AnalysisLog getLogById(Long id);
+    List<AnalysisLog> getLogsByZone(Long zoneId);
 
-    AnalysisLog saveLog(AnalysisLog log);
+    AnalysisLog getById(Long id);
 }
