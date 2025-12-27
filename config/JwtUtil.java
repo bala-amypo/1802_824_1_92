@@ -1,19 +1,8 @@
-package com.example.demo.config;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import java.util.Date;
+package com.example.demo.util;
 
 public class JwtUtil {
 
-    private static final String SECRET = "testsecretkey";
-
-    public static String generateToken(String username) {
-        return Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 3600000))
-                .signWith(SignatureAlgorithm.HS256, SECRET)
-                .compact();
+    public String generateToken(String username) {
+        return "dummy-token";
     }
 }
