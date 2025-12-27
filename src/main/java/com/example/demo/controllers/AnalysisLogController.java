@@ -1,10 +1,12 @@
-package com.example.demo.controllers;
+package com.example.demo.controller;
 
+import com.example.demo.model.AnalysisLog;
 import com.example.demo.service.AnalysisLogService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/analysis-logs")
 public class AnalysisLogController {
 
     private final AnalysisLogService service;
@@ -13,8 +15,10 @@ public class AnalysisLogController {
         this.service = service;
     }
 
-    @GetMapping("/logs")
-    public String getLogs() {
-        return service.getLog();
+    @GetMapping("/{id}")
+    public ResponseEntity<AnalysisLog> getById(@PathVariable Long id) {
+        return service.getById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }
