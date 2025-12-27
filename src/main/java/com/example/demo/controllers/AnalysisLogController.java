@@ -1,23 +1,33 @@
-package com.example.demo.controller;
+package com.example.demo.controllers;
 
 import com.example.demo.model.AnalysisLog;
 import com.example.demo.service.AnalysisLogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/analysis-logs")
+@RequestMapping("/api/analysis-logs")
 public class AnalysisLogController {
 
-    private final AnalysisLogService service;
+    @Autowired
+    private AnalysisLogService analysisLogService;
 
-    public AnalysisLogController(AnalysisLogService service) {
-        this.service = service;
+    @GetMapping
+    public ResponseEntity<List<AnalysisLog>> getAllLogs() {
+        return ResponseEntity.ok(analysisLogService.getLogs());
+    }
+
+    @GetMapping("/zone/{zoneId}")
+    public ResponseEntity<List<AnalysisLog>> getLogsByZone(@PathVariable Long zoneId) {
+        return ResponseEntity.ok(analysisLogService.getLogsByZone(zoneId));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AnalysisLog> getById(@PathVariable Long id) {
-        return service.getById(id)
+    public ResponseEntity<AnalysisLog> getLogById(@PathVariable Long id) {
+        return analysisLogService.getLogById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
