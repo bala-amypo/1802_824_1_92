@@ -18,9 +18,4 @@ public class AnalysisLogServiceImpl implements AnalysisLogService {
     public List<String> getLogsByZone(Long zoneId) {
         return new ArrayList<>();
     }
-
-    @Override
-    public String getById(Long id) {
-        return "Analysis log with id " + id;
-    }
 }

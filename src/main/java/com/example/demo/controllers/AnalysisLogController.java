@@ -1,18 +1,24 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.AnalysisLog;
 import com.example.demo.service.AnalysisLogService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/analysis-logs")
 public class AnalysisLogController {
 
-    @Autowired
-    private AnalysisLogService service;
+    private final AnalysisLogService service;
+
+    public AnalysisLogController(AnalysisLogService service) {
+        this.service = service;
+    }
 
     @GetMapping("/{id}")
-    public String getById(@PathVariable Long id) {
-        return service.getById(id);
+    public ResponseEntity<AnalysisLog> getById(@PathVariable Long id) {
+        return service.getById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }
