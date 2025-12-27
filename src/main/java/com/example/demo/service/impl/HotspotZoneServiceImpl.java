@@ -13,13 +13,12 @@ public class HotspotZoneServiceImpl implements HotspotZoneService {
     private final List<HotspotZone> zones = new ArrayList<>();
 
     @Override
-    public HotspotZone save(HotspotZone zone) {
+    public void addZone(HotspotZone zone) {
         zones.add(zone);
-        return zone;
     }
 
     @Override
-    public List<HotspotZone> findAll() {
+    public List<HotspotZone> getAllZones() {
         return zones;
     }
 }

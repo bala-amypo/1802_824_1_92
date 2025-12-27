@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface HotspotZoneService {
 
-    HotspotZone save(HotspotZone zone);
+    void addZone(HotspotZone zone);
 
-    List<HotspotZone> findAll();
+    List<HotspotZone> getAllZones();
 }
