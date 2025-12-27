@@ -1,11 +1,6 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+public interface PatternDetectionResultService {
 
-@Service
-public class PatternDetectionResultService {
-
-    public String getResults() {
-        return "Pattern detection results";
-    }
+    String getResults();
 }
