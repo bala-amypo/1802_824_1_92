@@ -1,11 +1,10 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class AnalysisLogService {
+public interface AnalysisLogService {
 
-    public String getById(Long id) {
-        return "Analysis log for ID: " + id;
-    }
+    List<String> getLogs();
+
+    List<String> getLogsByZone(Long zoneId);
 }
