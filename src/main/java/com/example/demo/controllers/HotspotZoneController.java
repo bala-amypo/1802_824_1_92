@@ -8,21 +8,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/hotspot-zones")
+@RequestMapping("/hotspots")
 public class HotspotZoneController {
 
     @Autowired
     private HotspotZoneService hotspotZoneService;
 
-    // ✅ Create Hotspot Zone
     @PostMapping
-    public HotspotZone createHotspotZone(@RequestBody HotspotZone zone) {
+    public HotspotZone create(@RequestBody HotspotZone zone) {
         return hotspotZoneService.save(zone);
     }
 
-    // ✅ Get All Hotspot Zones
     @GetMapping
-    public List<HotspotZone> getAllHotspotZones() {
+    public List<HotspotZone> getAll() {
         return hotspotZoneService.findAll();
     }
 }
