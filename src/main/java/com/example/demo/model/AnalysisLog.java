@@ -1,21 +1,12 @@
 package com.example.demo.model;
 
+import java.time.LocalDateTime;
+
 public class AnalysisLog {
 
-    private String message;
+    private LocalDateTime loggedAt = LocalDateTime.now();
 
-    public AnalysisLog() {
-    }
-
-    public AnalysisLog(String message) {
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public LocalDateTime getLoggedAt() {
+        return loggedAt;
     }
 }
