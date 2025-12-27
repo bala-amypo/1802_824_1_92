@@ -1,11 +1,11 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+import com.example.demo.model.HotspotZone;
+import java.util.List;
 
-@Service
-public class HotspotZoneService {
+public interface HotspotZoneService {
 
-    public String getHotspots() {
-        return "Hotspot zones data";
-    }
+    HotspotZone save(HotspotZone zone);
+
+    List<HotspotZone> findAll();
 }
