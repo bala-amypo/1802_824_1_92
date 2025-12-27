@@ -13,20 +13,21 @@ public class AnalysisLogServiceImpl implements AnalysisLogService {
     private final List<AnalysisLog> logs = new ArrayList<>();
 
     @Override
-    public List<AnalysisLog> getLogs() {
+    public List<AnalysisLog> getAllLogs() {
         return logs;
     }
 
     @Override
-    public List<AnalysisLog> getLogsByZone(Long zoneId) {
-        return logs;
-    }
-
-    @Override
-    public AnalysisLog getById(Long id) {
+    public AnalysisLog getLogById(Long id) {
         return logs.stream()
                 .filter(log -> log.getId().equals(id))
                 .findFirst()
                 .orElse(null);
+    }
+
+    @Override
+    public AnalysisLog saveLog(AnalysisLog log) {
+        logs.add(log);
+        return log;
     }
 }
