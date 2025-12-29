@@ -1,30 +1,33 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.PatternDetectionResult;
-import com.example.demo.model.HotspotZone;
-import com.example.demo.repository.HotspotZoneRepository;
-import com.example.demo.service.PatternDetectionService;
+import com.example.demo.repository.PatternDetectionResultRepository;
+import com.example.demo.service.PatternDetectionResultService;
 
-import java.time.LocalDate;
+import java.util.List;
 
-public class PatternDetectionServiceImpl implements PatternDetectionService {
+public class PatternDetectionResultServiceImpl
+        implements PatternDetectionResultService {
 
-    private final HotspotZoneRepository zoneRepo;
+    private final PatternDetectionResultRepository repository;
 
-    public PatternDetectionServiceImpl(HotspotZoneRepository zoneRepo) {
-        this.zoneRepo = zoneRepo;
+    public PatternDetectionResultServiceImpl(
+            PatternDetectionResultRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public PatternDetectionResult detectPattern(Long zoneId) {
-        HotspotZone zone = zoneRepo.findById(zoneId).orElse(null);
+    public PatternDetectionResult save(PatternDetectionResult result) {
+        return repository.save(result);
+    }
 
-        PatternDetectionResult result = new PatternDetectionResult();
-        result.setZone(zone);
-        result.setCrimeCount(10);
-        result.setDetectedPattern("HIGH_RISK");
-        result.setAnalysisDate(LocalDate.now());
+    @Override
+    public List<PatternDetectionResult> getAllResults() {
+        return repository.findAll();
+    }
 
-        return result;
+    @Override
+    public PatternDetectionResult getResultById(Long id) {
+        return repository.findById(id).orElse(null);
     }
 }
