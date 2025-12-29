@@ -11,20 +11,20 @@ import java.util.List;
 public class PatternDetectionResultServiceImpl
         implements PatternDetectionResultService {
 
-    private final PatternDetectionResultRepository repository;
+    private final PatternDetectionResultRepository repo;
 
     public PatternDetectionResultServiceImpl(
-            PatternDetectionResultRepository repository) {
-        this.repository = repository;
+            PatternDetectionResultRepository repo) {
+        this.repo = repo;
     }
 
     @Override
     public List<PatternDetectionResult> getResults() {
-        return repository.findAll();
+        return repo.findAll();
     }
 
     @Override
     public PatternDetectionResult getById(Long id) {
-        return repository.findById(id).orElse(null);
+        return repo.findById(id).orElse(null);
     }
 }

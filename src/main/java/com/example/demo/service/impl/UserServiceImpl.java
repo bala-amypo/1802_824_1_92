@@ -1,3 +1,12 @@
+package com.example.demo.service.impl;
+
+import com.example.demo.model.User;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.service.UserService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -7,14 +16,17 @@ public class UserServiceImpl implements UserService {
         this.repo = repo;
     }
 
+    @Override
     public User saveUser(User user) {
         return repo.save(user);
     }
 
+    @Override
     public List<User> getAllUsers() {
         return repo.findAll();
     }
 
+    @Override
     public User getUserById(Long id) {
         return repo.findById(id).orElse(null);
     }
