@@ -6,15 +6,13 @@ import java.util.Optional;
 
 public interface UserService {
 
-    // Existing
+    User saveUser(User user);
+
     User register(User user);
 
     Optional<User> findByEmail(String email);
 
-    // ✅ Required by UserController
-    User saveUser(User user);
+    User getUserById(Long id);
 
     List<User> getAllUsers();
-
-    User getUserById(Long id);
 }
