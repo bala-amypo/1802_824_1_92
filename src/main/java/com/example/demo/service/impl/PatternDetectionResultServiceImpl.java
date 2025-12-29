@@ -1,33 +1,18 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.PatternDetectionResult;
-import com.example.demo.repository.PatternDetectionResultRepository;
-import com.example.demo.service.PatternDetectionResultService;
+import com.example.demo.model.CrimeReport;
+import com.example.demo.service.PatternDetectionService;
 
 import java.util.List;
 
-public class PatternDetectionResultServiceImpl
-        implements PatternDetectionResultService {
-
-    private final PatternDetectionResultRepository repository;
-
-    public PatternDetectionResultServiceImpl(
-            PatternDetectionResultRepository repository) {
-        this.repository = repository;
-    }
+public class PatternDetectionServiceImpl implements PatternDetectionService {
 
     @Override
-    public PatternDetectionResult save(PatternDetectionResult result) {
-        return repository.save(result);
-    }
-
-    @Override
-    public List<PatternDetectionResult> getAllResults() {
-        return repository.findAll();
-    }
-
-    @Override
-    public PatternDetectionResult getResultById(Long id) {
-        return repository.findById(id).orElse(null);
+    public PatternDetectionResult detectPattern(List<CrimeReport> reports) {
+        PatternDetectionResult result = new PatternDetectionResult();
+        result.setCrimeCount(reports.size());
+        result.setDetectedPattern("HIGH_ACTIVITY");
+        return result;
     }
 }

@@ -9,39 +9,34 @@ import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final UserRepository repo;
 
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(UserRepository repo) {
+        this.repo = repo;
     }
 
-    // Existing method
-    @Override
-    public User register(User user) {
-        return userRepository.save(user);
-    }
-
-    // Existing method
-    @Override
-    public Optional<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    // ✅ REQUIRED BY CONTROLLER
     @Override
     public User saveUser(User user) {
-        return userRepository.save(user);
+        return repo.save(user);
     }
 
-    // ✅ REQUIRED BY CONTROLLER
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public User register(User user) {
+        return repo.save(user);
     }
 
-    // ✅ REQUIRED BY CONTROLLER
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return repo.findByEmail(email);
+    }
+
     @Override
     public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        return repo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return repo.findAll();
     }
 }

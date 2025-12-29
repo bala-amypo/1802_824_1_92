@@ -8,19 +8,19 @@ import java.util.List;
 
 public class HotspotZoneServiceImpl implements HotspotZoneService {
 
-    private final HotspotZoneRepository repository;
+    private final HotspotZoneRepository repo;
 
-    public HotspotZoneServiceImpl(HotspotZoneRepository repository) {
-        this.repository = repository;
+    public HotspotZoneServiceImpl(HotspotZoneRepository repo) {
+        this.repo = repo;
     }
 
     @Override
-    public HotspotZone save(HotspotZone zone) {
-        return repository.save(zone);
+    public HotspotZone addZone(HotspotZone zone) {
+        return repo.save(zone);
     }
 
     @Override
-    public List<HotspotZone> findAll() {
-        return repository.findAll();
+    public List<HotspotZone> getAllZones() {
+        return repo.findAll();
     }
 }

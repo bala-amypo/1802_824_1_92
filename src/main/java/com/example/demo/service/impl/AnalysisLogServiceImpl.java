@@ -2,30 +2,25 @@ package com.example.demo.service.impl;
 
 import com.example.demo.model.AnalysisLog;
 import com.example.demo.repository.AnalysisLogRepository;
+import com.example.demo.repository.HotspotZoneRepository;
 import com.example.demo.service.AnalysisLogService;
-
-import java.util.List;
 
 public class AnalysisLogServiceImpl implements AnalysisLogService {
 
-    private final AnalysisLogRepository repository;
+    private final AnalysisLogRepository repo;
+    private final HotspotZoneRepository zoneRepo;
 
-    public AnalysisLogServiceImpl(AnalysisLogRepository repository) {
-        this.repository = repository;
+    public AnalysisLogServiceImpl(
+            AnalysisLogRepository repo,
+            HotspotZoneRepository zoneRepo
+    ) {
+        this.repo = repo;
+        this.zoneRepo = zoneRepo;
     }
 
     @Override
-    public List<AnalysisLog> getLogs() {
-        return repository.findAll();
-    }
-
-    @Override
-    public List<AnalysisLog> getLogsByZone(Long zoneId) {
-        return repository.findByZone_Id(zoneId);
-    }
-
-    @Override
-    public AnalysisLog getLogById(Long id) {
-        return repository.findById(id).orElse(null);
+    public AnalysisLog addLog(long userId, String message) {
+        AnalysisLog log = new AnalysisLog(userId, message);
+        return repo.save(log);
     }
 }

@@ -1,15 +1,28 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
-@Entity
 public class AnalysisLog {
 
-    @Id
-    @GeneratedValue
     private Long id;
-
     private String message;
+    private LocalDateTime loggedAt;
+    private HotspotZone zone;
+
+    public AnalysisLog() {}
+
+    public AnalysisLog(Long userId, String message) {
+        this.message = message;
+        this.loggedAt = LocalDateTime.now();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getMessage() {
         return message;
@@ -17,5 +30,21 @@ public class AnalysisLog {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public LocalDateTime getLoggedAt() {
+        return loggedAt;
+    }
+
+    public void setLoggedAt(LocalDateTime loggedAt) {
+        this.loggedAt = loggedAt;
+    }
+
+    public HotspotZone getZone() {
+        return zone;
+    }
+
+    public void setZone(HotspotZone zone) {
+        this.zone = zone;
     }
 }
