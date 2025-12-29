@@ -1,8 +1,11 @@
 package com.example.demo.service;
 
+import com.example.demo.model.PatternDetectionResult;
+import java.util.List;
+
 public interface PatternDetectionResultService {
 
-    String getResults();
+    PatternDetectionResult saveResult(PatternDetectionResult result);
 
-    String getById(Long id);
+    List<PatternDetectionResult> getResultsByZone(long zoneId);
 }
