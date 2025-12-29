@@ -5,24 +5,16 @@ import com.example.demo.repository.CrimeReportRepository;
 import com.example.demo.service.CrimeReportService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class CrimeReportServiceImpl implements CrimeReportService {
 
-    private final CrimeReportRepository reportRepository;
+    private final CrimeReportRepository repo;
 
-    public CrimeReportServiceImpl(CrimeReportRepository reportRepository) {
-        this.reportRepository = reportRepository;
+    public CrimeReportServiceImpl(CrimeReportRepository repo) {
+        this.repo = repo;
     }
 
-    @Override
-    public CrimeReport saveReport(CrimeReport report) {
-        return reportRepository.save(report);
-    }
-
-    @Override
-    public List<CrimeReport> getAllReports() {
-        return reportRepository.findAll();
+    public CrimeReport addReport(CrimeReport report) {
+        return repo.save(report);
     }
 }

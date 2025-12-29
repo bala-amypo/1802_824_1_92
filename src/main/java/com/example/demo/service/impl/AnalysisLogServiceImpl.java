@@ -1,32 +1,29 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.AnalysisLog;
-import com.example.demo.repository.AnalysisLogRepository;
+import com.example.demo.repository.*;
 import com.example.demo.service.AnalysisLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDateTime;
 
 @Service
 public class AnalysisLogServiceImpl implements AnalysisLogService {
 
-    @Autowired
-    private AnalysisLogRepository repository;
+    private final AnalysisLogRepository logRepo;
+    private final HotspotZoneRepository zoneRepo;
 
-    @Override
-    public List<AnalysisLog> getLogs() {
-        return repository.findAll();
+    public AnalysisLogServiceImpl(
+            AnalysisLogRepository logRepo,
+            HotspotZoneRepository zoneRepo) {
+        this.logRepo = logRepo;
+        this.zoneRepo = zoneRepo;
     }
 
-    @Override
-    public List<AnalysisLog> getLogsByZone(Long zoneId) {
-        return repository.findByZoneId(zoneId);
-    }
-
-    @Override
-    public Optional<AnalysisLog> getLogById(Long id) {
-        return repository.findById(id);
+    public AnalysisLog addLog(long zoneId, String message) {
+        AnalysisLog log = new AnalysisLog();
+        log.setMessage(message);
+        log.setLoggedAt(LocalDateTime.now());
+        log.setZone(zoneRepo.findById(zoneId).orElse(null));
+        return logRepo.save(log);
     }
 }

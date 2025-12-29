@@ -1,25 +1,25 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.HotspotZone;
+import com.example.demo.repository.HotspotZoneRepository;
 import com.example.demo.service.HotspotZoneService;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class HotspotZoneServiceImpl implements HotspotZoneService {
 
-    private final List<HotspotZone> zones = new ArrayList<>();
+    private final HotspotZoneRepository repo;
 
-    @Override
-    public HotspotZone save(HotspotZone zone) {
-        zones.add(zone);
-        return zone;
+    public HotspotZoneServiceImpl(HotspotZoneRepository repo) {
+        this.repo = repo;
     }
 
-    @Override
-    public List<HotspotZone> findAll() {
-        return zones;
+    public HotspotZone addZone(HotspotZone zone) {
+        return repo.save(zone);
+    }
+
+    public List<HotspotZone> getAllZones() {
+        return repo.findAll();
     }
 }
