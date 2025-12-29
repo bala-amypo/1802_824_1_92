@@ -1,34 +1,25 @@
 package com.example.demo.service.impl;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.example.demo.model.AnalysisLog;
 import com.example.demo.repository.AnalysisLogRepository;
+import com.example.demo.repository.HotspotZoneRepository;
 import com.example.demo.service.AnalysisLogService;
 
-@Service
 public class AnalysisLogServiceImpl implements AnalysisLogService {
 
-    private final AnalysisLogRepository repository;
+    private final AnalysisLogRepository logRepo;
+    private final HotspotZoneRepository zoneRepo;
 
-    public AnalysisLogServiceImpl(AnalysisLogRepository repository) {
-        this.repository = repository;
+    public AnalysisLogServiceImpl(AnalysisLogRepository logRepo,
+                                  HotspotZoneRepository zoneRepo) {
+        this.logRepo = logRepo;
+        this.zoneRepo = zoneRepo;
     }
 
     @Override
-    public List<AnalysisLog> getLogs() {
-        return repository.findAll();
-    }
-
-    @Override
-    public List<AnalysisLog> getLogsByZone(Long zoneId) {
-        return repository.findByZoneId(zoneId);
-    }
-
-    @Override
-    public AnalysisLog getLogById(Long id) {
-        return repository.findById(id).orElse(null);
+    public AnalysisLog addLog(long zoneId, String message) {
+        AnalysisLog log = new AnalysisLog();
+        log.setMessage(message);
+        return logRepo.save(log);
     }
 }
