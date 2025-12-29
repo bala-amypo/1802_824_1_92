@@ -1,18 +1,30 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.PatternDetectionResult;
-import com.example.demo.model.CrimeReport;
-import com.example.demo.service.PatternDetectionService;
+import com.example.demo.repository.PatternDetectionResultRepository;
+import com.example.demo.service.PatternDetectionResultService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class PatternDetectionServiceImpl implements PatternDetectionService {
+@Service
+public class PatternDetectionResultServiceImpl
+        implements PatternDetectionResultService {
+
+    private final PatternDetectionResultRepository repo;
+
+    public PatternDetectionResultServiceImpl(
+            PatternDetectionResultRepository repo) {
+        this.repo = repo;
+    }
 
     @Override
-    public PatternDetectionResult detectPattern(List<CrimeReport> reports) {
-        PatternDetectionResult result = new PatternDetectionResult();
-        result.setCrimeCount(reports.size());
-        result.setDetectedPattern("BASIC_PATTERN");
-        return result;
+    public List<PatternDetectionResult> getResults() {
+        return repo.findAll();
+    }
+
+    @Override
+    public PatternDetectionResult getById(Long id) {
+        return repo.findById(id).orElse(null);
     }
 }
