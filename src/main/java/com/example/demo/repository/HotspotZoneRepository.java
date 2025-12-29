@@ -1,7 +1,15 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.HotspotZone;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-public interface HotspotZoneRepository extends JpaRepository<HotspotZone, Long> {
+public interface HotspotZoneRepository {
+
+    boolean existsByZoneName(String zoneName);
+
+    List<HotspotZone> findByZoneName(String zoneName);
+
+    List<HotspotZone> findBySeverityLevel(String severityLevel);
+
+    HotspotZone save(HotspotZone zone);
 }
