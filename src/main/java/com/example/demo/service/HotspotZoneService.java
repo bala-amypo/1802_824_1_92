@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
-import com.example.demo.model.HotspotZone;
 import java.util.List;
+import com.example.demo.model.HotspotZone;
 
 public interface HotspotZoneService {
 
-    HotspotZone addZone(HotspotZone zone);
+    HotspotZone save(HotspotZone zone);
 
-    List<HotspotZone> getAllZones();
+    List<HotspotZone> findAll();
+
+    HotspotZone findById(Long id);
 }
