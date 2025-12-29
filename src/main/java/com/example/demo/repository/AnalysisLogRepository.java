@@ -10,7 +10,7 @@ public interface AnalysisLogRepository {
 
     List<AnalysisLog> findAll();
 
-    List<AnalysisLog> findByZoneId(Long zoneId);
+    List<AnalysisLog> findByZone_Id(long id);
 
     Optional<AnalysisLog> findById(Long id);
 }
