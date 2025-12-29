@@ -1,33 +1,41 @@
-package com.example.demo.controllers;
+package com.example.demo.controller;
 
 import com.example.demo.model.CrimeReport;
-import com.example.demo.service.CrimeReportService;
+import com.example.demo. service.CrimeReportService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org. springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/crime-reports")
-@Tag(name = "Crime Report Controller", description = "Crime report APIs")
+@RequestMapping("/reports")
+@Tag(name = "Crime Reports", description = "Crime report management endpoints")
+@SecurityRequirement(name = "Bearer Authentication")
 public class CrimeReportController {
-
-    private final CrimeReportService service;
-
-    public CrimeReportController(CrimeReportService service) {
-        this.service = service;
+    
+    private final CrimeReportService crimeReportService;
+    
+    public CrimeReportController(CrimeReportService crimeReportService) {
+        this.crimeReportService = crimeReportService;
     }
-
-    @Operation(summary = "Add a crime report")
-    @PostMapping
-    public CrimeReport addReport(@RequestBody CrimeReport report) {
-        return service.addReport(report);
+    
+    @PostMapping("/")
+    @Operation(summary = "Add a new crime report")
+    public ResponseEntity<?> addReport(@RequestBody CrimeReport report) {
+        try {
+            CrimeReport saved = crimeReportService.addReport(report);
+            return ResponseEntity.ok(saved);
+        } catch (Exception e) {
+            return ResponseEntity. badRequest().body(e.getMessage());
+        }
     }
-
+    
+    @GetMapping("/")
     @Operation(summary = "Get all crime reports")
-    @GetMapping
-    public List<CrimeReport> getAllReports() {
-        return service.getAllReports();
+    public ResponseEntity<List<CrimeReport>> getAllReports() {
+        return ResponseEntity.ok(crimeReportService.getAllReports());
     }
 }
