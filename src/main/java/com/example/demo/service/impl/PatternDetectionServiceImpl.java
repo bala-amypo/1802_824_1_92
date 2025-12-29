@@ -17,7 +17,7 @@ public class PatternDetectionResultServiceImpl implements PatternDetectionServic
     }
 
     @Override
-    public PatternDetection save(PatternDetectionResult result) {
+    public PatternDetection save(PatternDetection) {
         return repository.save(result);
     }
 
