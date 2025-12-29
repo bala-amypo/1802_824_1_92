@@ -1,16 +1,24 @@
 package com.example.demo.util;
 
-public class CoordinateValidator {
+import org.springframework.stereotype.Component;
 
-    public static boolean isValidLatitude(Double latitude) {
+@Component
+public class CoordinateValidator {
+    
+    public boolean isValidLatitude(Double latitude) {
         return latitude != null && latitude >= -90 && latitude <= 90;
     }
-
-    public static boolean isValidLongitude(Double longitude) {
+    
+    public boolean isValidLongitude(Double longitude) {
         return longitude != null && longitude >= -180 && longitude <= 180;
     }
-
-    public static boolean isValidCoordinates(Double latitude, Double longitude) {
-        return isValidLatitude(latitude) && isValidLongitude(longitude);
+    
+    public void validateCoordinates(Double latitude, Double longitude) {
+        if (!isValidLatitude(latitude)) {
+            throw new IllegalArgumentException("Invalid latitude: must be between -90 and 90");
+        }
+        if (!isValidLongitude(longitude)) {
+            throw new IllegalArgumentException("Invalid longitude: must be between -180 and 180");
+        }
     }
 }
