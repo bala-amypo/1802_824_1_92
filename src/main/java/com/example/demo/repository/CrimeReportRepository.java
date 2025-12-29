@@ -1,14 +1,9 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.CrimeReport;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CrimeReportRepository {
-
-    List<CrimeReport> findByLatLongRange(
-            double minLat,
-            double maxLat,
-            double minLong,
-            double maxLong
-    );
+@Repository
+public interface CrimeReportRepository extends JpaRepository<CrimeReport, Long> {
 }

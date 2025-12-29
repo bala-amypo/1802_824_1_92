@@ -1,11 +1,11 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+import com.example.demo.model.CrimeReport;
+import java.util.List;
 
-@Service
-public class CrimeReportService {
+public interface CrimeReportService {
 
-    public String getAllReports() {
-        return "Crime reports fetched successfully";
-    }
+    CrimeReport saveReport(CrimeReport report);
+
+    List<CrimeReport> getAllReports();
 }
