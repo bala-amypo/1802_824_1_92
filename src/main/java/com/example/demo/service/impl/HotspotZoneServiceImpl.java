@@ -15,12 +15,12 @@ public class HotspotZoneServiceImpl implements HotspotZoneService {
     }
 
     @Override
-    public HotspotZone addZone(HotspotZone zone) {
+    public HotspotZone save(HotspotZone zone) {
         return repo.save(zone);
     }
 
     @Override
-    public List<HotspotZone> getAllZones() {
+    public List<HotspotZone> findAll() {
         return repo.findAll();
     }
 }
