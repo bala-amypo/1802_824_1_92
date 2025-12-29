@@ -3,9 +3,9 @@ package com.example.demo.service;
 import java.util.List;
 import com.example.demo.model.PatternDetectionResult;
 
-public interface PatternDetectionService {
+public interface PatternDetectionResultService {
 
-    PatternDetectionResult detectPattern(Long zoneId);
+    PatternDetectionResult save(PatternDetectionResult result);
 
     List<PatternDetectionResult> getAllResults();
 
