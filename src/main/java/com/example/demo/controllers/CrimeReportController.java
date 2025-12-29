@@ -1,20 +1,23 @@
-package com.example.demo.controller;
+package com.example.demo.controllers;
 
+import com.example.demo.model.CrimeReport;
 import com.example.demo.service.CrimeReportService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/crime")
+@RequestMapping("/api/crime-reports")
 public class CrimeReportController {
 
-    private final CrimeReportService service;
+    private final CrimeReportService crimeReportService;
 
-    public CrimeReportController(CrimeReportService service) {
-        this.service = service;
+    public CrimeReportController(CrimeReportService crimeReportService) {
+        this.crimeReportService = crimeReportService;
     }
 
     @GetMapping
-    public String getReports() {
-        return service.getAllReports();
+    public List<CrimeReport> getAllReports() {
+        return crimeReportService.getAllReports();
     }
 }
