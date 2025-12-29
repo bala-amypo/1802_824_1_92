@@ -1,23 +1,23 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.PatternDetectionResult;
-import com.example.demo.repository.PatternDetectionResultRepository;
-import com.example.demo.service.PatternDetectionResultService;
+import com.example.demo.model.PatternDetection;
+import com.example.demo.repository.PatternDetectionRepository;
+import com.example.demo.service.PatternDetectionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PatternDetectionResultServiceImpl implements PatternDetectionResultService {
+public class PatternDetectionResultServiceImpl implements PatternDetectionService {
 
-    private final PatternDetectionResultRepository repository;
+    private final PatternDetectionRepository repository;
 
-    public PatternDetectionResultServiceImpl(PatternDetectionResultRepository repository) {
+    public PatternDetectionServiceImpl(PatternDetectionRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public PatternDetectionResult save(PatternDetectionResult result) {
+    public PatternDetection save(PatternDetectionResult result) {
         return repository.save(result);
     }
 

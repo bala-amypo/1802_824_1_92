@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.PatternDetectionResult;
 import java.util.List;
 
-public interface PatternDetectionResultService {
+public interface PatternDetectionService {
 
     PatternDetectionResult save(PatternDetectionResult result);
 
