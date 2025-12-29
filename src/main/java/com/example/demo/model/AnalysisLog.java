@@ -1,9 +1,9 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "analysis_logs")
 public class AnalysisLog {
 
     @Id
@@ -11,38 +11,16 @@ public class AnalysisLog {
     private Long id;
 
     private String message;
+    private LocalDateTime loggedAt;
 
-    private Long zoneId;
+    @ManyToOne
+    private HotspotZone zone;
 
-    public AnalysisLog() {
-    }
+    public LocalDateTime getLoggedAt() { return loggedAt; }
+    public void setLoggedAt(LocalDateTime loggedAt) { this.loggedAt = loggedAt; }
 
-    public AnalysisLog(String message, Long zoneId) {
-        this.message = message;
-        this.zoneId = zoneId;
-    }
+    public HotspotZone getZone() { return zone; }
+    public void setZone(HotspotZone zone) { this.zone = zone; }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public Long getZoneId() {
-        return zoneId;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public void setZoneId(Long zoneId) {
-        this.zoneId = zoneId;
-    }
+    public void setMessage(String message) { this.message = message; }
 }

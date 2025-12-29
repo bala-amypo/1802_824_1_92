@@ -1,13 +1,19 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class HotspotZone {
 
-    private double centerLat;
-    private double centerLong;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public double getCenterLat() { return centerLat; }
-    public void setCenterLat(double centerLat) { this.centerLat = centerLat; }
+    private String zoneName;
 
-    public double getCenterLong() { return centerLong; }
-    public void setCenterLong(double centerLong) { this.centerLong = centerLong; }
+    public Long getId() { return id; }
+    public void setId(long id) { this.id = id; }
+
+    public String getZoneName() { return zoneName; }
+    public void setZoneName(String zoneName) { this.zoneName = zoneName; }
 }
