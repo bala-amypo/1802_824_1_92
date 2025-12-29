@@ -1,10 +1,3 @@
-package com.example.demo.service.impl;
-
-import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.service.UserService;
-import org.springframework.stereotype.Service;
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -14,11 +7,15 @@ public class UserServiceImpl implements UserService {
         this.repo = repo;
     }
 
-    public User register(User user) {
+    public User saveUser(User user) {
         return repo.save(user);
     }
 
-    public User findByEmail(String email) {
-        return repo.findByEmail(email);
+    public List<User> getAllUsers() {
+        return repo.findAll();
+    }
+
+    public User getUserById(Long id) {
+        return repo.findById(id).orElse(null);
     }
 }

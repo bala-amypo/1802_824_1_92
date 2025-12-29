@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface PatternDetectionResultService {
 
-    PatternDetectionResult saveResult(PatternDetectionResult result);
+    List<PatternDetectionResult> getResults();
 
-    List<PatternDetectionResult> getResultsByZone(long zoneId);
+    PatternDetectionResult getById(Long id);
 }
