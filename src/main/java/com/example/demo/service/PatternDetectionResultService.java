@@ -5,6 +5,13 @@ import com.example.demo.model.CrimeReport;
 
 import java.util.List;
 
-public interface PatternDetectionService {
+public interface PatternDetectionResultService {
+
+    // existing
     PatternDetectionResult detectPattern(List<CrimeReport> reports);
+
+    // required by controller
+    List<PatternDetectionResult> getAllResults();
+
+    PatternDetectionResult getResultById(Long id);
 }
