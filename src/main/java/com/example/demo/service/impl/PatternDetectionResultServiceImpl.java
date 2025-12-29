@@ -6,22 +6,19 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.PatternDetectionResult;
 import com.example.demo.repository.PatternDetectionResultRepository;
-import com.example.demo.service.PatternDetectionService;
+import com.example.demo.service.PatternDetectionResultService;
 
 @Service
-public class PatternDetectionServiceImpl implements PatternDetectionService {
+public class PatternDetectionResultServiceImpl implements PatternDetectionResultService {
 
     private final PatternDetectionResultRepository repository;
 
-    public PatternDetectionServiceImpl(PatternDetectionResultRepository repository) {
+    public PatternDetectionResultServiceImpl(PatternDetectionResultRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public PatternDetectionResult detectPattern(Long zoneId) {
-        PatternDetectionResult result = new PatternDetectionResult();
-        result.setZoneId(zoneId);
-        result.setPatternType("HIGH_CRIME");
+    public PatternDetectionResult save(PatternDetectionResult result) {
         return repository.save(result);
     }
 
